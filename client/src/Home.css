@@ -1,8 +1,12 @@
-.Home{
+.HP{
   padding-top:  10px;
   text-align: center;
-  background-image: url("bgH.jpg");
+  position: relative;
+  background-image: url("BGh.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   }
+.header{
+  color: white;
+}

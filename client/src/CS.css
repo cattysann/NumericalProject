@@ -1,5 +1,11 @@
 .CS {
   padding-top:  10px;
   text-align: center;
+  position: relative;
+  background-image: url("fire_bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
   

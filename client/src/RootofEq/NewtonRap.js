@@ -27,6 +27,7 @@ const columns = [
         key: "e"
     }
 ];
+var answ;
 class Newt extends Component {
     constructor() {
         super();
@@ -69,7 +70,11 @@ class Newt extends Component {
                 {
                     fn: this.state.fx, color: 'red'
                 }
-            ]
+            ],
+            annotations: [{
+                x: answ,
+                text: 'answer = '+ answ.toFixed(6)
+              }]
         });
 
     }
@@ -101,6 +106,7 @@ class Newt extends Component {
             iter++;
             xold = xnew;
         } while (er.toFixed(8) > 0.000001);
+        answ=xold;
         this.setState({
             showTable: true,
             showG: true,

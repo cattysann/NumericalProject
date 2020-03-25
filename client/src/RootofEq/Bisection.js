@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, InputGroup, FormControl } from 'react-bootstrap'
 import './bg.css';
-import { Table} from 'antd';
+import { Table } from 'antd';
 import { compile } from 'mathjs';
 //import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip} from 'recharts';
 import axios from 'axios';
@@ -34,7 +34,7 @@ const functionPlot = require("function-plot");
     return <div>  </div>
 }*/
 
-var dataInTable = [], bb,answ;
+var dataInTable = [], bb, answ;
 const columns = [
     {
         title: "Iteration",
@@ -71,7 +71,7 @@ class Bisection extends Component {
         this.state = {
             fx: '',
             xl: 0,
-            xr: 0,
+            xr: 2,
             showTable: false,
             showG: false,
             InputG: true
@@ -80,7 +80,7 @@ class Bisection extends Component {
     }
     componentDidMount() {
         console.log('response');
-        axios.get('http://localhost:80/test/Bisection')
+        axios.get('http://192.168.99.100:8080/test/Bisection')
             .then(function (response) {
 
                 console.log(response);
@@ -118,14 +118,14 @@ class Bisection extends Component {
             grid: true,
             data: [
                 {
-                    fn: this.state.fx ,color: 'red'
+                    fn: this.state.fx, color: 'red'
                 }
             ],
             annotations: [{
                 x: answ,
                 color: 'black',
-                text: 'answer = '+ answ.toFixed(6)
-              }]
+                text: 'answer = ' + answ.toFixed(6)
+            }]
         });
 
     }
@@ -178,11 +178,11 @@ class Bisection extends Component {
     }
     render() {
         return (
-            
+
             <div className="Bisection" >
                 <h1>Bisection</h1>
-                
-                <div style={{ padding: "50px 200px 200px" }} id ="Graph">
+
+                <div style={{ padding: "50px 200px 200px" }} id="Graph">
                     {this.state.InputG &&
                         <div>
                             <InputGroup size="lg" >
@@ -196,14 +196,14 @@ class Bisection extends Component {
                                 <InputGroup.Prepend >
                                     <InputGroup.Text id="inputGroup-sizing-lg" >XL</InputGroup.Text>
                                 </InputGroup.Prepend>
-                                <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="xl" placeholder=" " onChange={this.handleChange} />
+                                <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="xl" placeholder=" default : 0 " onChange={this.handleChange} />
                             </InputGroup>
                             <br />
                             <InputGroup size="lg">
                                 <InputGroup.Prepend >
                                     <InputGroup.Text id="inputGroup-sizing-lg">XR</InputGroup.Text>
                                 </InputGroup.Prepend>
-                                <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="xr" placeholder=" " onChange={this.handleChange} />
+                                <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="xr" placeholder="default : 2 " onChange={this.handleChange} />
                             </InputGroup>
                             <br />
                             <Button variant="outline-primary" onClick={() => this.handleauto()}>auto</Button>
@@ -211,9 +211,10 @@ class Bisection extends Component {
                             <br /><br />
                         </div>
                     }
-                    {this.state.showG && <div style={{backgroundColor:"White"}}>
+                    {this.state.showG && <div>
+                    <h2>fx = {this.state.fx} ; xl : {this.state.xl} xr : {this.state.xr} answer is {answ}</h2>
                         {this.ShowFunc()}</div>
-                        
+
                     }
 
                     {this.state.showTable &&

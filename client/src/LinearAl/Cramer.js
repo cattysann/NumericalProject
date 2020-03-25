@@ -8,7 +8,6 @@ var A = [], B = [], MA = [], MB = [], Ans = []
 const config = {}
 const math = create(all, config)
 
-
 class Cramer extends Component {
     constructor(props) {
         super(props);
@@ -50,7 +49,7 @@ class Cramer extends Component {
         var counter
         for (counter = 0; counter < this.dim; counter++) {
             var transformMatrix = JSON.parse(JSON.stringify(A));
-            for (var i = 0; i < this.row; i++) {
+            for (var i = 0; i < this.dim; i++) {
                 for (var j = 0; j < this.dim; j++) {
                     if (j === counter) {
                         transformMatrix[i][j] = B[i]
@@ -68,7 +67,7 @@ class Cramer extends Component {
 
         }
         this.setState({
-            Show: true
+            ShowANS: true
         });
     }
 
@@ -94,9 +93,9 @@ class Cramer extends Component {
     render() {
         return (
             <div className="Cramer">
-                <h1>Cramer Rule</h1>
+                <h1 >Cramer Rule</h1>
                 <div>
-                    {this.state.InputG && <div>
+                    {this.state.InputG && <div style={{padding:"50px 200px 400px"}}>
                         <InputGroup size="lg">
                             <InputGroup.Prepend >
                                 <InputGroup.Text id="inputGroup-sizing-lg">Dimension</InputGroup.Text>
@@ -113,7 +112,7 @@ class Cramer extends Component {
                             {MB}
                         </h1>
                         <Button onClick={() => this.cramer()}>Submit</Button></div>}
-                    {this.state.ShowANS && <h1>{Ans}</h1>}
+                    {this.state.ShowANS && <h4>{Ans}</h4>}
 
                 </div>
             </div>

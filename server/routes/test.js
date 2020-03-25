@@ -6,7 +6,7 @@ router.use(cors())
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/numer', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://Numer:AjSWK@cluster0-jo0gi.azure.mongodb.net/numer?retryWrites=true&w=majority', { useNewUrlParser: true });
 var db = mongoose.connection;
 
 var Schema = mongoose.Schema;
@@ -22,13 +22,13 @@ var mySchema = mongoose.Schema({
 
 var MyModel = mongoose.model('MyModel',mySchema,'Que');
 console.log('connect')
-/*
-router.get('/Bisection', function (req, res, next) {
+
+router.get('/', function (req, res, next) {
 	var obj = [{ name: 1, fx: 'x^3+4*x^2-10' }]
 	res.json(obj)
 });
-*/
-router.get('/bisection', function (req, res, next) {
+
+router.get('/Bisection', function (req, res, next) {
 	MyModel.find({ key: 'Bisection' }, function (err, docs) {
 		console.log(docs)
 		res.json(docs)
