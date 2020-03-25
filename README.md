@@ -1,5 +1,5 @@
 "# NumerProjectwithDocker" 
 
-docker-compose up --build
+docker-compose up
 
 เพื่อเปิดโปรเจค
