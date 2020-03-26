@@ -14,4 +14,12 @@ docker run -p 8080:8080 -d cattysann/numer_docker:api
 
 docker run -p 27017:27017 -d mongo
 
-โปรเจคจะรันอยู่ที่ 192.168.99.100 
+โปรเจคจะรันอยู่ที่ *192.168.99.100*
+
+เมื่อต้องการหยุด container ที่ run อยู่
+
+docker stop $(docker ps -aq)
+
+เมื่อต้องการลบimage*ทั้งหมด*ในเครื่อง 
+
+docker stop $(docker ps -aq)
