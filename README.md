@@ -22,4 +22,4 @@ docker stop $(docker ps -aq)
 
 เมื่อต้องการลบimage*ทั้งหมด*ในเครื่อง 
 
-docker stop $(docker ps -aq)
+docker system prune -a --volumes
