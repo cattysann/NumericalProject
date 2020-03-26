@@ -1,5 +1,17 @@
 "# NumerProjectwithDocker" 
 
-docker-compose up
+docker pull cattysann/numer_docker:app
 
-เพื่อเปิดโปรเจค
+docker pull cattysann/numer_docker:api
+
+docker pull mongo
+ 
+เพื่อเปิดโปรเจคใช้คำสั่ง
+
+docker run -p 80:3000 -d cattysann/numer_docker:app
+
+docker run -p 8080:8080 -d cattysann/numer_docker:api
+
+docker run -p 27017:27017 -d mongo
+
+โปรเจคจะรันอยู่ที่ 192.168.99.100 
